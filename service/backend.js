@@ -14,9 +14,64 @@ import { ArtistasConsulta, EsculturasConsulta, EventosConsulta, login, ObrasdeUn
 import { ordenarEsculturas, buscarEsculturas, ordenarEventos, buscarEventos, ordenarArtistas, buscarArtistas } from './filtrosObjetos.js';
 
 
+//Clave para el captcha
+
+import axios from 'axios';
+
+
+const app = express();
+app.use(express.json());
+
+async function verificarCaptcha(token) {
+    const secretKey = import.meta.env.VITE_RECAPTCHA_SECRET_KEY;; // Sustituye con tu clave secreta de reCAPTCHA
+    const url = `https://www.google.com/recaptcha/api/siteverify`;
+
+    try {
+        const response = await axios.post(url, null, {
+            params: {
+                secret: secretKey,
+                response: token,
+            },
+        });
+
+        return response.data.success; // Devuelve true si el captcha es válido
+    } catch (error) {
+        console.error('Error al verificar el captcha:', error);
+        return false;
+    }
+}
+
+// Endpoint de votación
+app.post('/api/votacion', async (req, res) => {
+    const { recaptchaToken, rating, nombre, email } = req.body;
+
+    // Llama a la función para verificar el captcha
+    const captchaValido = await verificarCaptcha(recaptchaToken);
+    if (!captchaValido) {
+        return res.status(400).json({ success: false, message: "Captcha inválido" });
+    }
+
+    // Continúa procesando la votación si el captcha es válido
+    // Ejemplo de lógica de registro de voto:
+    try {
+        // Simula guardar el voto en la base de datos
+        console.log('Voto registrado:', { rating, nombre, email });
+        res.json({ success: true, message: "Voto registrado correctamente" });
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Error interno del servidor" });
+    }
+});
+
+// Iniciar el servidor
+app.listen(3001, () => {
+    console.log("Servidor escuchando en el puerto 3001");
+});
+
+
+
 // Clave secreta para firmar el token (debería ser almacenada de forma segura, como en variables de entorno)
 const JWT_SECRET = process.env.JWT_SECRET; // Cambir por algo más seguro
-const app = express();
+// const app = express();
 const port = 3001;
 
 const cache = new NodeCache();
