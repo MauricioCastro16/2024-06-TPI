@@ -15,25 +15,39 @@
 - Zeniquel Martinelli, Camila Aylen
 
 ## Pasos para inicializar el proyecto
-TENER NPM  INSTALADO SI NO LO TENES BUSCA EN GOOGLE "npm instalar"
+Tener npm instalado
 
-CUCHA LO PRIMERO QUE VAS A HACER ES ABRIR LA CONSOLA DE COMANDOS O TERMINAL Y EJECUTAR ESTE COMANDO 
+# Instrucciones para configurar el proyecto
 
-    git clone https://github.com/FRRe-DS/2024-06-TPI.git
+1. Abre una consola de comandos o terminal y ejecuta el siguiente comando para clonar el repositorio:
+   git clone https://github.com/FRRe-DS/2024-06-TPI.git
 
-AHORA VAS A ABRIR OTRA CONSOLA Y VAS A TENER Q TENER DOS TERMINALES ABIERTAS
+2. Abre una segunda consola o terminal, ya que necesitarás trabajar con dos instancias abiertas simultáneamente.
 
-EN UNA HACE ESTO
-### Backend
-1. TE PARAS EN ESA CONSOLA EN LA CARPETA SERVICE
-2. EJECUTAS EL COMANDO "npm install" ESO TE INSTALA TODAS LAS LIBRERIAS NECESARIAS PARA EL BACKEND EN LA CARPETITA ESTA
-3. AHORA PODES EJECUTAR " node backend.js" ESO TE CORRE CON NODE 
+---
 
-Y EN LA OTRA TERMINAL TENES QUE HACER ESTO
-### Frontend
-1. TE PARAS EN LA CARPETA client/src 
-2. CORRES NPM INSTALL AHI TE INSTALA LO MISMO PERO EN LA CARPETA DE FRONTEND
-3. AHORA EJECUTAS EL COMANDO "npm run dev" Y TE DEBERIA CORRER EL FRONT  
+## Configuración del Backend
 
+1. En la primera consola, navega hasta la carpeta `service` del proyecto:
+   cd service
 
+2. Ejecuta el siguiente comando para instalar todas las librerías necesarias para el backend:
+   npm install
 
+3. Una vez completada la instalación, inicia el backend ejecutando:
+   node backend.js
+
+---
+
+## Configuración del Frontend
+
+1. En la segunda consola, navega hasta la carpeta `client/src` del proyecto:
+   cd client/src
+
+2. Ejecuta el siguiente comando para instalar las librerías necesarias para el frontend:
+   npm install
+
+3. Finalmente, inicia el entorno de desarrollo del frontend con el siguiente comando:
+   npm run dev
+
+Esto debería ser suficiente para poner en funcionamiento tanto el backend como el frontend.
